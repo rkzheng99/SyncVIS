@@ -4,6 +4,8 @@ Recent DETR-based methods have advanced the development of Video Instance Segmen
 
 ## Further Experiments
 
+We list the results of building our method upon other popular VIS methods apart from IDOL and VITA. Worth mentioning, TMT-VIS is mainly designed for training on multiple datasets, and in our experiments we mainly test the effectiveness of our model when training on a single YTVIS-19 dataset.
+
 Table 1 Experiments on aggregating our design to current VIS methods
 | Method                                | Backbone  | AP |
 |---------------------------------------|-----------|----|
