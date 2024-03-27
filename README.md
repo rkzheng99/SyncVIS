@@ -2,7 +2,7 @@
 
 ## :sunny:Overview
 
-**SyncVIS** explicitly introduces video-level query embeddings and designs two key modules to synchronize video-level query with frame-level query embeddings: a **synchronized video-frame modeling paradigm** and a **synchronized embedding optimization strategy**. The former attempts to promote the mutual learning of frame- and video-level embeddings with each other and the latter divides large video sequences into small clips for easier optimization.
+**SyncVIS** explicitly introduces video-level query embeddings and designs two key modules to synchronize video-level query with frame-level query embeddings: a **synchronized video-frame modeling paradigm** and a **synchronized embedding optimization strategy**. The former attempts to promote the mutual learning of frame- and video-level embeddings with each other and the latter divides large video sequences into small clips for easier optimization. In this page, we provide further experiments of our approaches and additional visualizations including both specific scenarios and failure cases as well as their analysis.
 
 ![image](https://github.com/rkzheng99/SyncVIS/blob/main/pics/model.png)
 
@@ -29,7 +29,7 @@ We list the results of building our method upon other popular VIS methods apart 
 ## :sparkles:Visualization
 
 ### Fast-Moving Instances
-In this part, we present you several cases showing that our model is capable of tracking and segmenting instances with greater velocity.
+In this part, we present you several cases showing that our model is capable of tracking and segmenting instances with greater velocity. These results demonstrate that with our video-frame synchronization, SyncVIS is able to depict the trajectories and appearances of these fast-moving objects. 
 
 #### Racing Car
 We demonstrate that our SyncVIS shows the ability of segmenting and tracking fast-moving racing cars with precision and consistency.
