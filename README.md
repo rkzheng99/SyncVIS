@@ -34,6 +34,13 @@ We demonstrate that our SyncVIS shows the ability of segmenting and tracking fas
 
 #### Skateboarding
 
+We demonstrate that our SyncVIS shows the ability of segmenting and tracking fast-moving man skating on his skateboard, segmenting the man's pose and movement with precision and consistency.
+
+<img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_0.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_1.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_2.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_3.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_4.jpg" width="300px"> 
+ 
+
+
+
 ### Failure Cases
 
 As for limitations, our model has problem in segmenting very crowded or heavily occluded scenarios. Even though our model shows better performance in segmenting complex scenes with multiple instances and occlusions than previous approaches. 
