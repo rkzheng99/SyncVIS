@@ -2,6 +2,8 @@
 
 **SyncVIS** explicitly introduces video-level query embeddings and designs two key modules to synchronize video-level query with frame-level query embeddings: a synchronized video-frame modeling paradigm and a synchronized embedding optimization strategy. The former attempts to promote the mutual learning of frame- and video-level embeddings with each other and the latter divides large video sequences into small clips for easier optimization.
 
+![image](https://github.com/rkzheng99/SyncVIS/blob/main/pics/model/png)
+
 ## Further Experiments
 
 We list the results of building our method upon other popular VIS methods apart from IDOL and VITA. Worth mentioning, TMT-VIS is mainly designed for training on multiple datasets, and in our experiments we mainly test the effectiveness of our model when training on a single YTVIS-19 dataset.
