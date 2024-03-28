@@ -2,7 +2,7 @@
 
 ## :sunny:Overview
 
-**SyncVIS** explicitly introduces video-level query embeddings and designs two key modules to synchronize video-level query with frame-level query embeddings: a **synchronized video-frame modeling paradigm** and a **synchronized embedding optimization strategy**. The former attempts to promote the mutual learning of frame- and video-level embeddings with each other and the latter divides large video sequences into small clips for easier optimization. In this page, we provide further experiments of our approaches and additional visualizations including both specific scenarios and failure cases as well as their analysis.
+**SyncVIS** explicitly introduces video-level query embeddings and designs two key modules to synchronize video-level query with frame-level query embeddings: a **synchronized video-frame modeling paradigm** and a **synchronized embedding optimization strategy**. The former attempts to promote the mutual learning of frame- and video-level embeddings with each other and the latter divides large video sequences into small clips for easier optimization. On this page, we provide **further experiments** of our approaches and **additional visualizations** including both specific scenarios and failure cases as well as their analysis.
 
 ![image](https://github.com/rkzheng99/SyncVIS/blob/main/pics/model.png)
 
@@ -32,13 +32,13 @@ We list the results of building our method upon other popular VIS methods apart 
 In this part, we present you several cases showing that our model is capable of tracking and segmenting instances with greater velocity. These results demonstrate that with our video-frame synchronization, SyncVIS is able to depict the trajectories and appearances of these fast-moving objects. 
 
 #### Racing Car
-We demonstrate that our SyncVIS shows the ability of segmenting and tracking fast-moving racing cars with precision and consistency.
+We demonstrate that our SyncVIS has the ability of segmenting and tracking fast-moving racing cars with precision and consistency.
 
 <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/racing_car_0.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/racing_car_1.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/racing_car_2.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/racing_car_3.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/racing_car_4.jpg" width="300px">
 
 #### Skateboarding
 
-We demonstrate that our SyncVIS shows the ability of segmenting and tracking fast-moving man skating on his skateboard, segmenting the man's pose and movement with precision and consistency.
+We demonstrate that our SyncVIS has the ability of segmenting and tracking fast-moving man skating on his skateboard, segmenting the man's pose and movement with precision and consistency.
 
 <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_0.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_1.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_2.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_3.jpg" width="300px"> <img src="https://github.com/rkzheng99/SyncVIS/blob/main/pics/fast_moving/skating_4.jpg" width="300px"> 
  
