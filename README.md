@@ -1,12 +1,12 @@
 # SyncVIS: Synchronized Video Instance Segmentation
 
-## :sunny:Overview
+## :sunny: Overview
 
 **SyncVIS** explicitly introduces video-level query embeddings and designs two key modules to synchronize video-level query with frame-level query embeddings: a **synchronized video-frame modeling paradigm** and a **synchronized embedding optimization strategy**. The former attempts to promote the mutual learning of frame- and video-level embeddings with each other and the latter divides large video sequences into small clips for easier optimization. On this page, we provide **further experiments** of our approaches and **additional visualizations** including both specific scenarios and failure cases as well as their analysis.
 
 ![image](https://github.com/rkzheng99/SyncVIS/blob/main/pics/model.png)
 
-## :pencil2:Further Experiments
+## :pencil2: Further Experiments
 
 We list the results of building our method upon other popular VIS methods apart from IDOL and VITA. Worth mentioning, TMT-VIS is mainly designed for training on multiple datasets, and in our experiments, we mainly test the effectiveness of our model when training on a single YTVIS-19 dataset. 
 
@@ -26,7 +26,7 @@ We list the results of building our method upon other popular VIS methods apart 
 |+ Synchronized Embedding Optimization|52.7|+ Synchronized Embedding Optimization|51.3|
 |+ Both (SyncVIS)|55.4|+ Both (SyncVIS)|56.5|
 
-## :sparkles:Visualization
+## :sparkles: Visualization
 
 ### Fast-Moving Instances
 In this part, we present you several cases showing that our model is capable of tracking and segmenting instances with greater velocity. These results demonstrate that with our video-frame synchronization, SyncVIS is able to depict the trajectories and appearances of these fast-moving objects. 
