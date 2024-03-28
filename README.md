@@ -48,6 +48,6 @@ We demonstrate that our SyncVIS shows the ability of segmenting and tracking fas
 ### Failure Cases
 ![image](https://github.com/rkzheng99/SyncVIS/blob/main/pics/failure.png)
 
-As for limitations, our model has problem in segmenting very crowded or heavily occluded scenarios. Even though our model shows better performance in segmenting complex scenes with multiple instances and occlusions than previous approaches. 
+As for limitations, our model has problem in segmenting very crowded or heavily occluded scenarios. As shown in the above frames, our model has a problem segmenting the person behind the horseman in the front (but can segment most of the horseman), showing that heavy occlusion remains a vital challenge. However, our model still shows better performance in segmenting complex scenes with multiple instances and occlusions than previous approaches. 
 
 
