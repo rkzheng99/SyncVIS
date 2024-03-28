@@ -46,6 +46,7 @@ We demonstrate that our SyncVIS shows the ability of segmenting and tracking fas
 
 
 ### Failure Cases
+![image](https://github.com/rkzheng99/SyncVIS/blob/main/pics/failure.png)
 
 As for limitations, our model has problem in segmenting very crowded or heavily occluded scenarios. Even though our model shows better performance in segmenting complex scenes with multiple instances and occlusions than previous approaches. 
 
