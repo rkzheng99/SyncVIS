@@ -1,6 +1,6 @@
 ## Getting Started
 
-We provide a script `train_net_syncvis.py`, that is made to train all the configs in syncvisNet.
+We provide a script `train_net_syncvis.py`, that is made to train all the configs in syncvisFormer.
 
 To train a model with "train_net_syncvis.py" on VIS, first setup the corresponding datasets following the instructions in folder `datasets`
 
