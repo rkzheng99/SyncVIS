@@ -256,12 +256,8 @@ class syncvis(nn.Module):
 
     def train_model(self, batched_inputs):
         images = []
-        # idx_list=[[0,1],[0,2],[0,3],[0,4],[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
-        # idx_list=[[0,1],[0,2],[0,3],[0,4],[1,2],[1,3],[1,4],[2,3],[2,4],[3,4],[0,1,2,3,4]]
-        idx_list=[[0,1],[1,2],[2,3],[3,4]]
-        
-        #weight_list=[0.25,0.5,0.75,1,0.25,0.5,0.75,0.25,0.5,0.25,0]
-        weight_list=[1,1,1,1]
+        idx_list=[[0,1],[1,2],[2,3],[3,4],[0,1,2,3,4]
+        weight_list=[0.25,1,1,0.25,1]
         dynamic_weight_list=[]
         for video in batched_inputs:
             for frame in video["image"]:
@@ -304,12 +300,12 @@ class syncvis(nn.Module):
                 else:
                     # remove this loss if not specified in `weight_dict`
                     losses_list[i].pop(k)
-        # for k in list(losses.keys()):
-        #     if k in self.criterion.weight_dict:
-        #         losses[k] = losses[k] * self.criterion.weight_dict[k]        
-        #     else:
-        #             # remove this loss if not specified in `weight_dict`
-        #         losses.pop(k)
+        for k in list(losses.keys()):
+            if k in self.criterion.weight_dict:
+                losses[k] = losses[k] * self.criterion.weight_dict[k]        
+            else:
+                    # remove this loss if not specified in `weight_dict`
+                losses.pop(k)
 
         syncvis_loss_dict = self.syncvis_criterion(syncvis_outputs, clip_targets, frame_targets, fg_indices)
         syncvis_weight_dict = self.syncvis_criterion.weight_dict
@@ -325,9 +321,7 @@ class syncvis(nn.Module):
         h_pad, w_pad = images.tensor.shape[-2:]
         frame_gt_instances = []
         frame_gt_instances_list = [[],[],[],[],[],[],[],[],[],[],[]]
-        # idx_list=[[0,1],[0,2],[0,3],[0,4],[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
-        # idx_list=[[0,1],[0,2],[0,3],[0,4],[1,2],[1,3],[1,4],[2,3],[2,4],[3,4],[0,1,2,3,4]]
-        idx_list=[[0,1],[1,2],[2,3],[3,4]]
+        idx_list=[[0,1],[1,2],[2,3],[3,4],[0,1,2,3,4]
         frame_gt_instances_1 = []
         frame_gt_instances_2 = []
         frame_gt_instances_3 = []
