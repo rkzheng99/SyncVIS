@@ -11,20 +11,20 @@
 We list the results of building our method upon other popular VIS methods apart from IDOL and VITA. Worth mentioning, TMT-VIS is mainly designed for training on multiple datasets, and in our experiments, we mainly test the effectiveness of our model when training on a single YTVIS-19 dataset. 
 
 **Table 1 Experiments on aggregating our design to current VIS methods (ResNet-50)**
-| Method                                | Backbone  | AP |
-|---------------------------------------|-----------|----|
-| GenVIS                                | ResNet-50 |51.3|
-| + Synchronized Video-Frame Modeling   | ResNet-50 |53.1|
-| + Synchronized Embedding Optimization | ResNet-50 |52.6|
-| + Both (SyncVIS)                      | ResNet-50 |54.2|
-| TMT-VIS                               | ResNet-50 |47.3|
-| + Synchronized Video-Frame Modeling   | ResNet-50 |50.6|
-| + Synchronized Embedding Optimization | ResNet-50 |48.7|
-| + Both (SyncVIS)                      | ResNet-50 |51.5|
-| DVIS                                  | ResNet-50 |52.6|
-| + Synchronized Video-Frame Modeling   | ResNet-50 |53.9|
-| + Synchronized Embedding Optimization | ResNet-50 |53.4|
-| + Both (SyncVIS)                      | ResNet-50 |54.1|
+|Method|AP|Method|AP|
+|:----|:----|:----|:----|
+|Mask2Former|45.1|VITA|49.5|
+|+ Synchronized Video-Frame Modeling|50.3|+ Synchronized Video-Frame Modeling|53|
+|+ Synchronized Embedding Optimization|46.7|+ Synchronized Embedding Optimization|51.2|
+|+ Both (SyncVIS)|51.5|+ Both (SyncVIS)|54.2|
+|TMT-VIS|47.3|DVIS|52.6|
+|+ Synchronized Video-Frame Modeling|51.1|+ Synchronized Video-Frame Modeling|54.9|
+|+ Synchronized Embedding Optimization|48.7|+ Synchronized Embedding Optimization|54|
+|+ Both (SyncVIS)|51.9|+ Both (SyncVIS)|55.8|
+|GenVIS|51.3|IDOL|49.5|
+|+ Synchronized Video-Frame Modeling|54.4|+ Synchronized Video-Frame Modeling|55.1|
+|+ Synchronized Embedding Optimization|52.7|+ Synchronized Embedding Optimization|51.3|
+|+ Both (SyncVIS)|55.4|+ Both (SyncVIS)|56.5|
 
 ## :sparkles:Visualization
 
