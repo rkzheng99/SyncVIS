@@ -412,18 +412,16 @@ class syncvisMultiScaleMaskedTransformerDecoder(nn.Module):
 
             frame_queries = []
             predictions_class = []
-            predictions_mask = []
-            predictions_class1 = []
-            predictions_mask1 = []
-
-
+            predictions_mask = []                           
             # prediction heads on learnable query features
             outputs_class, outputs_mask, attn_mask, frame_query = self.forward_prediction_heads(output, mask_features, attn_mask_target_size=size_list[0])
             outputs_class1, outputs_mask1, attn_mask1, frame_query1= self.forward_prediction_heads(output1, clip_mask_features, attn_mask_target_size=size_list[0])
 
+
             predictions_class.append(outputs_class)
             predictions_mask.append(outputs_mask)
 
+            
             for i in range(self.num_layers):
                 level_index = i % self.num_feature_levels
                 attn_mask[torch.where(attn_mask.sum(-1) == attn_mask.shape[-1])] = False
@@ -432,7 +430,7 @@ class syncvisMultiScaleMaskedTransformerDecoder(nn.Module):
                     output, src[level_index],
                     memory_mask=attn_mask,
                     memory_key_padding_mask=None,  # here we do not apply masking on padded region
-                    pos=pos[level_index], query_pos=query_embed
+                    pos=pos_tmp[level_index], query_pos=query_embed
                 )
 
                 output = self.transformer_self_attention_layers[i](
@@ -446,11 +444,59 @@ class syncvisMultiScaleMaskedTransformerDecoder(nn.Module):
                     output
                 )
 
-                outputs_class, outputs_mask, attn_mask, frame_query = self.forward_prediction_heads(output, mask_features, attn_mask_target_size=size_list[(i + 1) % self.num_feature_levels])
+                attn_mask1[torch.where(attn_mask1.sum(-1) == attn_mask1.shape[-1])] = False
+                # attention: cross-attention first
+                output1 = self.transformer_cross_attention_layers[i](
+                    output1, src[level_index],
+                    memory_mask=attn_mask1,
+                    memory_key_padding_mask=None,  # here we do not apply masking on padded region
+                    pos=pos[level_index], query_pos=query_embed1
+                )
+
+                output1 = self.transformer_self_attention_layers[i](
+                    output1, tgt_mask=None,
+                    tgt_key_padding_mask=None,
+                    query_pos=query_embed1
+                )
                 
+                # FFN
+                output1 = self.transformer_ffn_layers[i](
+                    output1
+                )
+                outputs_class1, outputs_mask1, attn_mask1, frame_query1 = self.forward_prediction_heads(output1, clip_mask_features, attn_mask_target_size=size_list[(i + 1) % self.num_feature_levels])
+                predictions_class.append(outputs_class1)
+                predictions_mask.append(outputs_mask1)
+                
+                output1_tmp = self.FFN_1(output1)
+
+                scores = F.softmax(outputs_class1, dim=2)[:, :,:-1]  #5,100,40
+
+                out_logits,logits_indices = scores.topk(k=2,dim=2) #5,100,k<40
+                out_logits = torch.sum(out_logits,dim=2)
+                select_logits, select_indices = out_logits.topk(k=10,dim=1,largest=True)  #5*10
+                
+                ref_query = torch.cat([output1[:, i, :][select_indices[i, :], :] for i in range(2)], dim=1)
+
+                output_tmp = self.FFN_2(output)
+                output_cache, weights = self.multi_attn(output_tmp,ref_query,ref_query)
+                
+                output = (1 - lamda) * output + lamda * output_cache
+                outputs_class, outputs_mask1, attn_mask1, frame_query1 = self.forward_prediction_heads(output, mask_features, attn_mask_target_size=size_list[(i + 1) % self.num_feature_levels])
+                scores1 = F.softmax(outputs_class, dim=2)[:, :,:-1]  #5,100,40
+
+                out_logits1,logits_indices = scores1.topk(k=2,dim=2) #2,100,k<40
+                out_logits1 = torch.sum(out_logits1,dim=2)
+                select_logits, select_indices1 = out_logits1.topk(k=10,dim=1,largest=True)  #5*10
+                
+                ref_query = torch.cat([output1[:, i, :][select_indices1[i, :], :] for i in range(5)], dim=1)
+                output1_tmp = self.FFN_3(output1)                                            
+                output1_cache, weights = self.multi_attn(output1_tmp,ref_query,ref_query)
+                output1 = (1 - lamda) * output1 + lamda * output1_cache
+                outputs_class, outputs_mask, attn_mask, frame_query = self.forward_prediction_heads(output, mask_features, attn_mask_target_size=size_list[0])
                 frame_queries.append(frame_query)
                 predictions_class.append(outputs_class)
                 predictions_mask.append(outputs_mask)
+
 
             assert len(predictions_class) == self.num_layers + 1
 
