@@ -1,6 +1,6 @@
 # SyncVIS: Synchronized Video Instance Segmentation
 
--🔥Our SyncVIS is accepted by NeurIPS 2024 (poster)!
+🔥Our SyncVIS is accepted by NeurIPS 2024 (poster)! (2024.10)
 
 ## :sunny: Overview
 
