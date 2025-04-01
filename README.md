@@ -1,5 +1,7 @@
 # SyncVIS: Synchronized Video Instance Segmentation
 
+## 🔥: Our SyncVIS is accepted by NeurIPS 2024 (poster)!
+
 ## :sunny: Overview
 
 **SyncVIS** explicitly introduces video-level query embeddings and designs two key modules to synchronize video-level query with frame-level query embeddings: a **synchronized video-frame modeling paradigm** and a **synchronized embedding optimization strategy**. The former attempts to promote the mutual learning of frame- and video-level embeddings with each other and the latter divides large video sequences into small clips for easier optimization. On this page, we provide **further experiments** of our approaches and **additional visualizations** including both specific scenarios and failure cases as well as their analysis.
